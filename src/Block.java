@@ -5,7 +5,8 @@ import java.util.Date;
  * encapsulate private data, a prior hash, and a timestamp.
  * 
  * @author Tim Stelter
- *
+ * @version v51618
+ * 
  */
 public class Block {
 
@@ -23,6 +24,27 @@ public class Block {
 		this.data = data;
 		this.previousHash = previousHash;
 		this.timeStamp = new Date().getTime();
+		this.hash = calculateHash();
 	}
 	
+	/**
+	 * This method generates a hash
+	 * @return a hash value
+	 */
+	public String calculateHash() {
+		String calculatedHash = StringUtil.applySha(
+				previousHash +
+				Long.toString(timeStamp) +
+				data);
+		
+		return calculatedHash;
+	}
+	
+	public String getHash() {
+		return hash;
+	}
+	
+	public String getPrevHash() {
+		return previousHash;
+	}
 }
