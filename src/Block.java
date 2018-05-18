@@ -40,10 +40,18 @@ public class Block {
 		return calculatedHash;
 	}
 	
+	/**
+	 * Getter for the the hash.
+	 * @return returns the hash value.
+	 */
 	public String getHash() {
 		return hash;
 	}
 	
+	/**
+	 * Getter for previous hash value.
+	 * @return Returns the previous hash.
+	 */
 	public String getPrevHash() {
 		return previousHash;
 	}
