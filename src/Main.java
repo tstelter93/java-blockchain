@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import com.google.gson.*;
 
 /**
  * Program entry point.
@@ -8,15 +10,27 @@
  */
 public class Main {
 
+	/*Protected class BlockChain*/
+	protected static ArrayList<Block> blockchain = new ArrayList<Block>();
+	
+	/**
+	 * Main
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		// Create blocks and add to arraylist
 		Block firstBlock = new Block("First block", "0");
-		System.out.println("Hash for block 1 : " + firstBlock.getHash());
+		blockchain.add(firstBlock);
 		
 		Block secondBlock = new Block("Second block", firstBlock.getHash());
-		System.out.println("Hash for block 2 : " + secondBlock.getHash());
+		blockchain.add(secondBlock);
 		
 		Block thirdBlock = new Block("Third block", secondBlock.getHash());
-		System.out.println("Hash for block 3 : " + thirdBlock.getHash());
+		blockchain.add(thirdBlock);
+		
+		// Json builder
+		String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
+		System.out.println(blockchainJson);
 	}
 
 }
