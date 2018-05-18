@@ -18,7 +18,6 @@ public class StringUtil {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			byte[] hash = digest.digest(str.getBytes("UTF-8"));
-			System.out.println(hash);
 			StringBuffer hexString = new StringBuffer();
 			String hex = "";
 			for(int i =0; i < hash.length; i++) {
@@ -26,7 +25,6 @@ public class StringUtil {
 				if(hex.length() == 1) hexString.append('0');
 					hexString.append(hex);
 			}
-			System.out.println(hexString);
 			return hexString.toString();
 		} catch(Exception e) {
 			throw new RuntimeException(e);
