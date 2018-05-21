@@ -20,22 +20,28 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Create blocks and add to arraylist
+		// Create blocks and add to arraylist :
 		Block firstBlock = new Block("First block", "0");
 		blockchain.add(firstBlock);
+		System.out.println("Trying to mine block 1... ");
+		blockchain.get(0).mineBlock(DIFFICULTY);
 		
 		Block secondBlock = new Block("Second block", firstBlock.getHash());
 		blockchain.add(secondBlock);
+		System.out.println("Trying to mine block 2... ");
+		blockchain.get(1).mineBlock(DIFFICULTY);
 		
 		Block thirdBlock = new Block("Third block", secondBlock.getHash());
 		blockchain.add(thirdBlock);
+		System.out.println("Trying to mine block 3... ");
+		blockchain.get(2).mineBlock(DIFFICULTY);
 		
-		//Mining the blockchain
-		for(int i = 0; i < blockchain.size(); i++) {
-			System.out.println("Trying to mine block " + (i + 1) + "... ");
-			blockchain.get(i).mineBlock(DIFFICULTY);
-		}
+		Block fourthBlock = new Block("Third block", thirdBlock.getHash());
+		blockchain.add(fourthBlock);
+		System.out.println("Trying to mine block 4... ");
+		blockchain.get(3).mineBlock(DIFFICULTY);
 		
+		// Print if chain is Valid
 		System.out.print("\nBlockchain is Valid: " + isChainValid());
 		
 		// Json builder
