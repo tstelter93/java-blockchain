@@ -14,6 +14,7 @@ public class Block {
 	private String previousHash;
 	private String data;
 	private long timeStamp;
+	private int nonce;
 	
 	/**
 	 * Block constructor
@@ -35,9 +36,24 @@ public class Block {
 		String calculatedHash = StringUtil.applySha(
 				previousHash +
 				Long.toString(timeStamp) +
+				Integer.toString(nonce) +
 				data);
 		
 		return calculatedHash;
+	}
+	
+	/**
+	 * This method mines a block given a difficulty of the block.
+	 * @param difficulty the difficult of the block to be mined (the number of zeros they must solve for)
+	 */
+	public void mineBlock(int difficulty) {
+		String str = new String(new char[difficulty]).replace('\0', '0');
+		
+		while(!hash.substring(0, difficulty).equals(str)) {
+			nonce++;
+			hash = calculateHash();
+		}
+		System.out.println("Block mined! : " + hash);
 	}
 	
 	/**
