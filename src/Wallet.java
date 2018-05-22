@@ -2,7 +2,7 @@ import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 
 /**
- * This class functions like a wallet for cryptocurrency.
+ * This class functions like a wallet for our cryptocurrency.
  * 
  * @author Tim Stelter
  * @version v52218
